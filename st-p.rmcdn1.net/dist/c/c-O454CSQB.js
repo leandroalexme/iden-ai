@@ -1,0 +1,31 @@
+import {
+    a as f
+} from "https://st-p.rmcdn1.net/ae5fa58f/dist/c/c-64BUEHBL.js";
+
+function p(t, {
+    include: e,
+    exclude: n
+} = {}) {
+    let i = c => {
+        let o = r => typeof r == "string" ? c === r : r.test(c);
+        return e ? e.some(o) : n ? !n.some(o) : !0
+    };
+    for (let [c, o] of s(t.constructor.prototype)) {
+        if (o === "constructor" || !i(o)) continue;
+        let r = Reflect.getOwnPropertyDescriptor(c, o);
+        r && typeof r.value == "function" && (t[o] = t[o].bind(t))
+    }
+    return t
+}
+var s, u = f(() => {
+    "use strict";
+    s = t => {
+        let e = new Set;
+        do
+            for (let n of Reflect.ownKeys(t)) e.add([t, n]); while ((t = Reflect.getPrototypeOf(t)) && t !== Object.prototype);
+        return e
+    }
+});
+export {
+    p as a, u as b
+};
